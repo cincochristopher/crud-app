@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="form">
     <table v-if="todos.length > 0">
       <thead>
         <th>Todo</th>
@@ -18,18 +18,18 @@
   </div>
 </template>
 <script>
-  import { mapActions, mapState } from 'vuex';
-  import { EDIT_TODO, DELETE_TODO } from '../store/types';
-  import { upperFirst } from 'lodash';
+import { mapActions, mapState } from 'vuex';
+import { upperFirst } from 'lodash';
+import { EDIT_TODO, DELETE_TODO } from '../store/types';
 
-  export default {
-    name: 'TodosTable',
-    computed: {
-      ...mapState({
-        todos: (state) => state.todo.all,
-      }),
-    },
-    methods: {
+export default {
+  name: 'TodosTable',
+  computed: {
+    ...mapState({
+      todos: (state) => state.todo.all,
+    }),
+  },
+  methods: {
     ...mapActions({
       deleteTodo: DELETE_TODO,
       editTodo: EDIT_TODO,
@@ -43,6 +43,19 @@
     deleteItem(todo) {
       this.deleteTodo(todo);
     },
-  }
-}
+  },
+};
 </script>
+<style scoped lang="scss">
+  table {
+    width: 100%;
+    th, td {
+      text-align: center;
+      padding: 12px 20px;
+      margin: 8px 0;
+    }
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+</style>

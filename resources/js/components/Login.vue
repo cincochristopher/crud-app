@@ -1,5 +1,5 @@
 <template>
- <div>
+ <div class="form">
    <form class="login" @submit.prevent="login">
      <h1>Sign in</h1>
      <label>Email</label>
@@ -20,8 +20,8 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
-    }
+      password: '',
+    };
   },
   methods: {
     ...mapActions({
@@ -30,9 +30,9 @@ export default {
     login() {
       const { email, password } = this;
       this.loginUser({ email, password }).then(() => {
-        this.$router.push({ name: 'DisplayTodos' });
+        this.$router.push({ name: 'CreateTodo' });
       });
-    }
-  }
-}
+    },
+  },
+};
 </script>

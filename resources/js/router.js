@@ -2,11 +2,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Login from './components/Login.vue';
 import Register from './components/Register.vue';
-import DisplayTodos from './components/DisplayTodos.vue';
+import CreateTodo from './components/CreateTodo.vue';
 import TodoItem from './components/TodoItem.vue';
 import store from './store';
-Vue.use(VueRouter);
 
+Vue.use(VueRouter);
 
 const ifNotAuthenticated = (to, from, next) => {
   if (!store.state.auth.authenticated) {
@@ -14,7 +14,7 @@ const ifNotAuthenticated = (to, from, next) => {
     return;
   }
   next('/todos');
-}
+};
 
 const ifAuthenticated = (to, from, next) => {
   if (store.state.auth.authenticated) {
@@ -22,7 +22,7 @@ const ifAuthenticated = (to, from, next) => {
     return;
   }
   next('/login');
-}
+};
 
 const routes = [
   {
@@ -38,9 +38,9 @@ const routes = [
     beforeEnter: ifNotAuthenticated,
   },
   {
-    name: 'DisplayTodos',
+    name: 'CreateTodo',
     path: '/todos',
-    component: DisplayTodos,
+    component: CreateTodo,
     beforeEnter: ifAuthenticated,
   },
   {
@@ -51,4 +51,4 @@ const routes = [
   },
 ];
 
-export default new VueRouter({ mode: 'history', routes: routes});
+export default new VueRouter({ mode: 'history', routes });
