@@ -33,8 +33,6 @@
     ...mapActions({
       deleteTodo: DELETE_TODO,
       editTodo: EDIT_TODO,
-      // getTodos: GET_TODOS,
-      // addTodo: ADD_TODO,
     }),
     formatName(todo) {
       return upperFirst(todo);

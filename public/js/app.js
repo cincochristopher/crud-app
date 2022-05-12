@@ -19795,8 +19795,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])({
     deleteTodo: __WEBPACK_IMPORTED_MODULE_1__store_types__["e" /* DELETE_TODO */],
     editTodo: __WEBPACK_IMPORTED_MODULE_1__store_types__["f" /* EDIT_TODO */]
-    // getTodos: GET_TODOS,
-    // addTodo: ADD_TODO,
   }), {
     formatName: function formatName(todo) {
       return Object(__WEBPACK_IMPORTED_MODULE_2_lodash__["upperFirst"])(todo);

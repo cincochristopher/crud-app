@@ -49,11 +49,6 @@ const routes = [
     component: DisplayTodoItem,
     beforeEnter: ifAuthenticated,
   },
-  // {
-  //  path: '/:catchAll(.*)*',
-  //  name: "PageNotFound",
-  //  component: PageNotFound,
-  // },
 ];
 
 export default new VueRouter({ mode: 'history', routes: routes});
