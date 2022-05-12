@@ -13,7 +13,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { AUTH_LOGIN } from '../store/types';
+import { AUTH_LOGIN, GET_USER } from '../store/types';
 
 export default {
   name: 'Login',
@@ -26,10 +26,12 @@ export default {
   methods: {
     ...mapActions({
       loginUser: AUTH_LOGIN,
+      getUser: GET_USER,
     }),
     login() {
       const { email, password } = this;
       this.loginUser({ email, password }).then(() => {
+        this.getUser();
         this.$router.push({ name: 'CreateTodo' });
       });
     },

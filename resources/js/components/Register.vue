@@ -15,7 +15,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { AUTH_REGISTER } from '../store/types';
+import { AUTH_REGISTER, GET_USER } from '../store/types';
 
 export default {
   name: 'Register',
@@ -29,10 +29,12 @@ export default {
   methods: {
     ...mapActions({
       registerUser: AUTH_REGISTER,
+      getUser: GET_USER,
     }),
     register() {
       const { name, email, password } = this;
       this.registerUser({ name, email, password }).then(() => {
+        this.getUser();
         this.$router.push({ name: 'CreateTodo' });
       });
     },

@@ -13,5 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return redirect('/login');
+});
+
 Route::get('/{any}', [\App\Http\Controllers\HomeController::class, 'index'])->where('any', '.*');
 

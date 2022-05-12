@@ -16133,6 +16133,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -16143,10 +16146,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
     isLoggedIn: function isLoggedIn(state) {
       return state.auth.authenticated;
+    },
+    user: function user(state) {
+      return state.auth.user;
     }
   })),
+  created: function created() {
+    this.getUser();
+  },
+
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])({
-    logoutUser: __WEBPACK_IMPORTED_MODULE_1__store_types__["c" /* AUTH_LOGOUT */]
+    logoutUser: __WEBPACK_IMPORTED_MODULE_1__store_types__["c" /* AUTH_LOGOUT */],
+    getUser: __WEBPACK_IMPORTED_MODULE_1__store_types__["h" /* GET_USER */]
   }), {
     logout: function logout() {
       var _this = this;
@@ -19180,7 +19191,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])({
-    loginUser: __WEBPACK_IMPORTED_MODULE_1__store_types__["b" /* AUTH_LOGIN */]
+    loginUser: __WEBPACK_IMPORTED_MODULE_1__store_types__["b" /* AUTH_LOGIN */],
+    getUser: __WEBPACK_IMPORTED_MODULE_1__store_types__["h" /* GET_USER */]
   }), {
     login: function login() {
       var _this = this;
@@ -19189,6 +19201,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           password = this.password;
 
       this.loginUser({ email: email, password: password }).then(function () {
+        _this.getUser();
         _this.$router.push({ name: 'CreateTodo' });
       });
     }
@@ -19366,7 +19379,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])({
-    registerUser: __WEBPACK_IMPORTED_MODULE_1__store_types__["d" /* AUTH_REGISTER */]
+    registerUser: __WEBPACK_IMPORTED_MODULE_1__store_types__["d" /* AUTH_REGISTER */],
+    getUser: __WEBPACK_IMPORTED_MODULE_1__store_types__["h" /* GET_USER */]
   }), {
     register: function register() {
       var _this = this;
@@ -19376,6 +19390,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           password = this.password;
 
       this.registerUser({ name: name, email: email, password: password }).then(function () {
+        _this.getUser();
         _this.$router.push({ name: 'CreateTodo' });
       });
     }
@@ -37324,7 +37339,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "\n.topnav[data-v-7cd4f788] {\n  background-color: #333;\n  overflow: hidden;\n}\n.topnav a[data-v-7cd4f788] {\n  float: left;\n  color: #f2f2f2;\n  text-align: center;\n  padding: 14px 16px;\n  text-decoration: none;\n  font-size: 17px;\n}\n.topnav .logout[data-v-7cd4f788] {\n  float: right;\n}\n.topnav a[data-v-7cd4f788]:hover {\n  background-color: #ddd;\n  color: black;\n}\n", ""]);
+exports.push([module.i, "\n.topnav[data-v-7cd4f788] {\n  background-color: #333;\n  overflow: hidden;\n}\n.topnav a[data-v-7cd4f788] {\n  float: right;\n  color: #f2f2f2;\n  text-align: center;\n  padding: 14px 16px;\n  text-decoration: none;\n  font-size: 17px;\n}\n.topnav .logout[data-v-7cd4f788] {\n  float: right;\n}\n.logged-in-user[data-v-7cd4f788] {\n  float: right;\n  color: #f2f2f2;\n  font-weight: 900;\n  display: block;\n  margin: 10px 10px 0 0;\n  padding: 5px 10px;\n}\n.topnav a[data-v-7cd4f788]:hover {\n  background-color: #ddd;\n  color: black;\n}\n", ""]);
 
 // exports
 
@@ -37341,11 +37356,7 @@ var render = function() {
     !_vm.isLoggedIn
       ? _c(
           "span",
-          [
-            _c("router-link", { attrs: { to: "/register" } }, [
-              _vm._v("Register")
-            ])
-          ],
+          [_c("router-link", { attrs: { to: "/login" } }, [_vm._v("Login")])],
           1
         )
       : _vm._e(),
@@ -37353,7 +37364,11 @@ var render = function() {
     !_vm.isLoggedIn
       ? _c(
           "span",
-          [_c("router-link", { attrs: { to: "/login" } }, [_vm._v("Login")])],
+          [
+            _c("router-link", { attrs: { to: "/register" } }, [
+              _vm._v("Register")
+            ])
+          ],
           1
         )
       : _vm._e(),
@@ -37373,6 +37388,12 @@ var render = function() {
             },
             [_vm._v("Logout")]
           )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.isLoggedIn
+      ? _c("span", { staticClass: "logged-in-user" }, [
+          _vm._v("\n      Hi, " + _vm._s(_vm.user.name) + "\n    ")
         ])
       : _vm._e()
   ])
