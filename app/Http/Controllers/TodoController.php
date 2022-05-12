@@ -59,7 +59,7 @@ class TodoController extends Controller
         $item->name = $request->get('name');
         $item->save();
 
-        return response()->json(['data' => $item]);
+        return response()->json($item);
     }
 
     /**

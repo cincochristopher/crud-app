@@ -38,11 +38,9 @@
       return upperFirst(todo);
     },
     editItem(todo) {
-      console.log('todo: ', todo);
-      this.editTodo(todo);
+      this.$router.push({ name: 'TodoItem', params: { id: todo.id } });
     },
     deleteItem(todo) {
-      console.log('todo: ', todo);
       this.deleteTodo(todo);
     },
   }

@@ -2,17 +2,9 @@
   <div>
     <h1>Add Todo</h1>
     <form v-on:submit.prevent="saveTodo">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Add todo</label>
-            <input type="text" class="form-control" v-model="todo">
-          </div>
-        </div>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary">Create</button>
-        </div>
+      <label>Todo: </label>
+     <input required v-model="todo" type="password"/>
+     <button type="submit">Save</button>
     </form>
     <div class="todos-table">
       <TodosTable />

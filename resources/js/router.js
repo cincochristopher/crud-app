@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 import DisplayTodos from './components/DisplayTodos.vue';
-import DisplayTodoItem from './components/DisplayTodoItem.vue';
+import TodoItem from './components/TodoItem.vue';
 import store from './store';
 Vue.use(VueRouter);
 
@@ -44,9 +44,9 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
-    name: 'DisplayTodoItem',
+    name: 'TodoItem',
     path: '/todos/:id',
-    component: DisplayTodoItem,
+    component: TodoItem,
     beforeEnter: ifAuthenticated,
   },
 ];

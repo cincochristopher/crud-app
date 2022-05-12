@@ -11,6 +11,7 @@ import axios from 'axios';
 export default {
   state: () => ({
     all: [],
+    current: null,
   }),
   mutations: {
     setTodos(state, value) {
@@ -18,6 +19,9 @@ export default {
     },
     addTodo(state, value) {
       state.all.push(value);
+    },
+    setCurrentTodo(state, value) {
+      state.current = value;
     },
     removeTodo(state, value) {
       const index = state.all.findIndex(a => a.id == value.id);
@@ -46,7 +50,6 @@ export default {
     [ADD_TODO]: ({ dispatch, commit }, payload) => {
       return axios({ url: '/api/todos', data: payload, method: 'POST'})
         .then(({ data }) => {
-          console.log('data: ', data);
           commit("addTodo", data);
           return data;
         })
@@ -58,7 +61,9 @@ export default {
       return axios({ url: `/api/todos/${payload.id}`, data: payload, method: 'PUT'});
     },
     [SHOW_TODO]: ({ dispatch, commit }, payload) => {
-      return axios({ url: `/api/todos/${payload.id}`, method: 'GET'});
+      return axios({ url: `/api/todos/${payload.id}`, method: 'GET'}).then(({data}) => {
+        commit("setCurrentTodo", data);
+      });
     },
     [DELETE_TODO]: ({ dispatch, commit }, payload)  => {
       return axios({ url: `/api/todos/${payload.id}`, data: payload, method: 'DELETE'})
