@@ -77,6 +77,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'require',
+            'client_encoding' => 'utf8'
         ],
 
         'sqlsrv' => [
