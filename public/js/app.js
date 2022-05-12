@@ -37422,7 +37422,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "\ntable[data-v-c52ee9e8] {\n  width: 100%;\n}\ntable th[data-v-c52ee9e8], table td[data-v-c52ee9e8] {\n    text-align: center;\n    padding: 12px 20px;\n    margin: 8px 0;\n}\ntr[data-v-c52ee9e8]:nth-child(even) {\n  background-color: #f2f2f2;\n}\n", ""]);
+exports.push([module.i, "\ntable[data-v-c52ee9e8] {\n  width: 100%;\n}\ntable th[data-v-c52ee9e8], table td[data-v-c52ee9e8] {\n    text-align: center;\n    padding: 12px 20px;\n    margin: 8px 0;\n}\ntable tr[data-v-c52ee9e8]:nth-child(even) {\n    background-color: #f2f2f2;\n}\n", ""]);
 
 // exports
 
@@ -37444,16 +37444,17 @@ var render = function() {
             "tbody",
             _vm._l(_vm.todos, function(todo) {
               return _c("tr", [
-                _c("td", [_vm._v(" " + _vm._s(_vm.formatName(todo.name)))]),
+                _c("td", { attrs: { width: "80%" } }, [
+                  _vm._v(" " + _vm._s(_vm.formatName(todo.name)))
+                ]),
                 _vm._v(" "),
                 _c("td", [
                   _c(
-                    "a",
+                    "button",
                     {
-                      attrs: { href: "#" },
+                      staticClass: "btn-edit",
                       on: {
                         click: function($event) {
-                          $event.preventDefault()
                           return _vm.editItem(todo)
                         }
                       }
@@ -37462,12 +37463,11 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c(
-                    "a",
+                    "button",
                     {
-                      attrs: { href: "#" },
+                      staticClass: "btn-delete",
                       on: {
                         click: function($event) {
-                          $event.preventDefault()
                           return _vm.deleteItem(todo)
                         }
                       }

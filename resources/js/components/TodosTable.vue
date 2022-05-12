@@ -7,10 +7,10 @@
       </thead>
       <tbody>
         <tr v-for="todo in todos">
-          <td> {{ formatName(todo.name) }}</td>
+          <td width="80%"> {{ formatName(todo.name) }}</td>
           <td>
-            <a href="#" @click.prevent="editItem(todo)">Edit</a>
-            <a href="#" @click.prevent="deleteItem(todo)">Delete</a>
+            <button class="btn-edit" @click ="editItem(todo)">Edit</button>
+            <button class="btn-delete" @click ="deleteItem(todo)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -54,8 +54,8 @@ export default {
       padding: 12px 20px;
       margin: 8px 0;
     }
-  }
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
   }
 </style>

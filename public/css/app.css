@@ -28,3 +28,19 @@ button {
   cursor: pointer;
   width: 100%;
 }
+
+button.btn-edit {
+  width: 100px;
+  margin: 0 auto;
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+button.btn-delete {
+  width: 100px;
+  margin: 0 auto;
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
